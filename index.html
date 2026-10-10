@@ -3,31 +3,262 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de IMC</title>
+    <title>Stark HUD // Tactical Command - Protocolo Vingador</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main class="container">
-        <h1>Calculadora de IMC</h1>
-        
-        <div class="input-group">
-            <label for="weight">Peso (kg):</label>
-            <input type="number" id="weight" step="0.1" placeholder="Ex: 70" />
-        </div>
+    <div class="app-layout">
+        <!-- Sidebar Esquerda -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>STARK HUD // TACTICAL</h2>
+            </div>
+            <div class="sidebar-section">
+                <span class="sidebar-label">DIRECTIVE REGISTRY</span>
+                <nav class="sidebar-nav">
+                    <a href="#" class="nav-item active">
+                        <span class="nav-icon">⦿</span> TACTICAL OVERVIEW
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-icon">⚡</span> THREAT MATRIX
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-icon">🌐</span> GLOBAL TELEMETRY
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-icon">🛡️</span> AVENGERS READINESS
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-icon">⚛️</span> ARC REACTOR GRID
+                    </a>
+                    <a href="#" class="nav-item">
+                        <span class="nav-icon">📁</span> PROTOCOL ARCHIVES
+                    </a>
+                </nav>
+            </div>
+            <div class="sidebar-footer">
+                <div class="footer-line"><span>S.I.E.L.D. SEC-ID</span> <span>#STK-904-L7</span></div>
+                <div class="footer-line"><span>ENCRYPTION KEY</span> <span>MARK-85.QUANTUM</span></div>
+            </div>
+        </aside>
 
-        <div class="input-group">
-            <label for="height">Altura (m):</label>
-            <input type="number" id="height" step="0.01" placeholder="Ex: 1.75" />
-        </div>
+        <!-- Conteúdo Principal -->
+        <main class="main-content">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="topbar-brand">
+                    <div class="brand-logo">A</div>
+                    <div class="brand-text">
+                        <span class="brand-title">STARK INDUSTRIES // TACTICAL COMMAND</span>
+                        <span class="brand-subtitle">STRATEGIC HOMELAND INTERVENTION LOGISTICS</span>
+                    </div>
+                </div>
+                <div class="topbar-telemetry">
+                    <span class="badge-status">F.R.I.D.A.Y. SYSTEM: ONLINE // DEFCON 1</span>
+                    <span class="badge-clearance">LEVEL 7 CLEARANCE</span>
+                    <span class="badge-voice">AI VOICE ACTIVE</span>
+                    <div class="user-avatar">👤</div>
+                </div>
+            </header>
 
-        <button id="calculate-btn">Calcular IMC</button>
+            <!-- Subheader de Protocolo -->
+            <div class="protocol-subheader">
+                <div class="protocol-title-area">
+                    <span class="sub-tracker">STARK TACTICAL TELEMETRY / PROTOCOLO RECRUTA / BIOMETRIA DE FORÇA [SYS.88-ALPHA]</span>
+                    <h1>PROTOCOLO VINGADOR: ANÁLISE BIOMÉTRICA & IMC</h1>
+                </div>
+                <div class="protocol-directives">
+                    <span class="directive-chip">DIRETRIZ S.H.I.E.L.D. 24-B</span>
+                    <span class="directive-diag">F.R.I.D.A.Y.: DIAGNÓSTICO CONCLUÍDO // IMC 26.8 // NÍVEL TIER-HEAVY-ARMOR</span>
+                </div>
+                <div class="reactor-sensor">
+                    <span class="sensor-label">SENSOR DE NÚCLEO<br><strong>ARC-V8.4 ONLINE</strong></span>
+                    <button class="reload-btn">↺</button>
+                </div>
+            </div>
 
-        <div id="result" class="result hidden">
-            <p id="imc-value"></p>
-            <p id="imc-classification"></p>
-        </div>
-    </main>
+            <!-- Grade Principal de Módulos -->
+            <div class="dashboard-grid">
+                <!-- Coluna Esquerda: Parâmetros Biométricos -->
+                <section class="tactical-card biomat-card">
+                    <div class="card-header-meta">
+                        <span class="meta-title">☷ PARÂMETROS BIOMÉTRICOS</span>
+                        <span class="meta-coord">SEC-09 // LAT.ACTIVE</span>
+                    </div>
 
+                    <div class="unit-toggle">
+                        <button class="toggle-btn active" id="btnMetric">MÉTRICO (kg / cm)</button>
+                        <button class="toggle-btn" id="btnArmor">TRAJE TÁTICO ATIVO</button>
+                    </div>
+
+                    <!-- Massa Corporal -->
+                    <div class="input-group">
+                        <div class="input-label-row">
+                            <span class="label-icon">⚖</span>
+                            <span class="label-name">MASSA CORPORAL</span>
+                            <div class="input-value-display"><span id="weightValue">82</span> <span class="unit-s">KG</span></div>
+                        </div>
+                        <input type="range" id="weightRange" min="30" max="200" value="82" class="tactical-slider">
+                        <div class="slider-modifiers">
+                            <button class="mod-btn" data-target="weight" data-val="-5">-5 KG</button>
+                            <button class="mod-btn" data-target="weight" data-val="-1">-1</button>
+                            <button class="mod-btn" data-target="weight" data-val="1">+1</button>
+                            <button class="mod-btn" data-target="weight" data-val="5">+5 KG</button>
+                            <span class="ref-tag">REF: TERRA-616</span>
+                        </div>
+                    </div>
+
+                    <!-- Estatura / Altura -->
+                    <div class="input-group">
+                        <div class="input-label-row">
+                            <span class="label-icon">↕</span>
+                            <span class="label-name">ESTATURA / ALTURA</span>
+                            <div class="input-value-display"><span id="heightValue">175</span> <span class="unit-s">CM</span></div>
+                        </div>
+                        <input type="range" id="heightRange" min="120" max="220" value="175" class="tactical-slider">
+                        <div class="slider-modifiers">
+                            <button class="mod-btn" data-target="height" data-val="-5">-5 CM</button>
+                            <button class="mod-btn" data-target="height" data-val="-1">-1</button>
+                            <button class="mod-btn" data-target="height" data-val="1">+1</button>
+                            <button class="mod-btn" data-target="height" data-val="5">+5 CM</button>
+                            <span class="ref-tag" id="heightMetersRef">1.75 M</span>
+                        </div>
+                    </div>
+
+                    <!-- Carga de Equipamento Tático -->
+                    <div class="equipment-section">
+                        <div class="eq-header">CARGA DE EQUIPAMENTO TÁTICO <span id="gearExtraLabel">+0 KG</span></div>
+                        <div class="eq-grid">
+                            <button class="eq-btn active" data-gear="0">CIVIL (+0kg)</button>
+                            <button class="eq-btn" data-gear="15">S.H.I.E.L.D. (+15kg)</button>
+                            <button class="eq-btn" data-gear="90">MARK-85 (+90kg)</button>
+                        </div>
+                    </div>
+
+                    <!-- Botão de Ação -->
+                    <button class="tactical-cta" id="calcBtn">
+                        <span>⚡ CALCULAR NÍVEL DE FORÇA (IMC)</span>
+                        <span class="cta-arrow">›</span>
+                    </button>
+
+                    <!-- Perfis de Combate -->
+                    <div class="combat-profiles">
+                        <div class="profiles-header">CARREGAR PERFIL DE COMBATE <span class="sync-status">● ARCHIVE SYNC</span></div>
+                        <div class="profiles-grid">
+                            <div class="profile-chip" data-w="82" data-h="175"><strong>Tony Stark</strong>82kg // 175cm</div>
+                            <div class="profile-chip" data-w="108" data-h="188"><strong>Steve Rogers</strong>108kg // 188cm</div>
+                            <div class="profile-chip" data-w="59" data-h="170"><strong>Natasha R.</strong>59kg // 170cm</div>
+                            <div class="profile-chip" data-w="76" data-h="178"><strong>Peter Parker</strong>76kg // 178cm</div>
+                            <div class="profile-chip" data-w="290" data-h="198"><strong>Thor Odinson</strong>290kg // 198cm</div>
+                            <div class="profile-chip" data-w="635" data-h="260"><strong>Bruce / Hulk</strong>635kg // 260cm</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Coluna Direita: Telemetria e Diretrizes -->
+                <div class="right-column">
+                    <!-- Telemetria de Força -->
+                    <section class="tactical-card telemetry-card">
+                        <div class="card-header-meta">
+                            <span class="meta-title">📈 TELEMETRIA DE FORÇA EM TEMPO REAL</span>
+                            <span class="meta-coord holographic-ready">● HOLOGRAPHIC READY</span>
+                        </div>
+
+                        <div class="telemetry-content">
+                            <div class="imc-gauge-container">
+                                <div class="gauge-ring">
+                                    <div class="gauge-inner-content">
+                                        <span class="gauge-title">ÍNDICE IMC</span>
+                                        <strong class="gauge-number" id="imcResultNumber">26.8</strong>
+                                        <span class="gauge-unit">KG/M²</span>
+                                    </div>
+                                </div>
+                                <div class="gauge-status-text">
+                                    FAIXA: <span id="imcCategoryLabel">PESO PESADO (SOBREPESO / TANQUE)</span>
+                                </div>
+                            </div>
+
+                            <div class="avengers-tier-box">
+                                <div class="tier-header-row">
+                                    <span class="classif-label">CLASSIFICAÇÃO AVENGERS</span>
+                                    <span class="tier-badge" id="avengerTierBadge">TIER-HEAVY-ARMOR</span>
+                                </div>
+                                <h3 class="hero-name-result" id="heroNameResult">FORÇA HULKBUSTER / TANQUE DE COMBATE</h3>
+                                <p class="hero-desc-result" id="heroDescResult">Massa corporal densa e blindada com alta capacidade de absorção de impacto balístico. Protocolo de força bruta apto para linha de frente.</p>
+                                
+                                <div class="imc-scale-bars">
+                                    <div class="scale-legend">
+                                        <span>&lt;18.5<br><strong>FURTIVO</strong></span>
+                                        <span>18.5-24.9<br><strong>SOLDADO</strong></span>
+                                        <span>SUPER-25-29.9<br><strong>TANQUE</strong></span>
+                                        <span>≥30<br><strong>TITÃ</strong></span>
+                                    </div>
+                                    <div class="scale-track">
+                                        <div class="scale-pointer" id="scalePointer" style="left: 65%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="telemetry-submetrics">
+                            <div class="submetric-item">
+                                <span class="sub-icon">📐</span>
+                                <span class="sub-label">MASSA MAGRA ESTIMADA</span>
+                                <strong><span id="leanMassValue">62.2</span> <span class="s-unit">KG</span></strong>
+                                <span class="sub-sub">81% EFICIÊNCIA FÍSICA</span>
+                            </div>
+                            <div class="submetric-item">
+                                <span class="sub-icon">⚛</span>
+                                <span class="sub-label">METABOLISMO BASAL (TMB)</span>
+                                <strong><span id="tmbValue">1.759</span> <span class="s-unit">KCAL</span></strong>
+                                <span class="sub-sub">CONSUMO BASE OPERACIONAL</span>
+                            </div>
+                            <div class="submetric-item">
+                                <span class="sub-icon">⚡</span>
+                                <span class="sub-label">CARGA DO REATOR ARC</span>
+                                <strong>3.3 <span class="s-unit">GJ/H</span></strong>
+                                <span class="sub-sub">SINCRONIZADO COM BIOPULSO</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Diretrizes Táticas de Saúde -->
+                    <section class="tactical-card directives-card">
+                        <div class="card-header-meta">
+                            <span class="meta-title">📋 DIRETRIZES TÁTICAS DE SAÚDE // S.H.I.E.L.D.</span>
+                            <span class="meta-coord">CLEARANCE LVL 7 REQUERIDA</span>
+                        </div>
+
+                        <div class="directives-grid">
+                            <div class="directive-box">
+                                <div class="dir-title">🥋 TREINO CAP. ROGERS</div>
+                                <p id="dirWorkout">Rotina combinada de treinos aeróbicos em esteira de vácuo, circuitos táticos metabólicos e mobilidade articular pesada.</p>
+                                <span class="dir-status status-rec">STATUS: RECOMENDADO</span>
+                            </div>
+                            <div class="directive-box">
+                                <div class="dir-title">🥗 NUTRIÇÃO DRA. CHO</div>
+                                <p id="dirNutrition">Déficit calórico moderado de -350 kcal focado na preservação de massa muscular com alta ingestão de fibras vegetais.</p>
+                                <span class="dir-status status-cal">CALIBRADO</span>
+                            </div>
+                            <div class="directive-box">
+                                <div class="dir-title">🌙 RECUPERAÇÃO F.R.I.D.A.Y.</div>
+                                <p>Câmara de recuperação criogênica a -110°C para alívio articular e drenagem linfática computadorizada.</p>
+                                <span class="dir-status status-auto">AUTO-MONITORADO</span>
+                            </div>
+                        </div>
+
+                        <div class="card-bottom-bar">
+                            <span class="secure-log">🛡 FICHA BIOMÉTRICA REGISTRADA NO BANCO CENTRAL DA TORRE STARK</span>
+                            <button class="export-btn" id="exportBtn">⬇ EXPORTAR RELATÓRIO TÁTICO (PDF)</button>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
